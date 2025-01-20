@@ -1,3 +1,6 @@
+UPPER_LIMIT = 8
+LOWER_LIMIT = 1
+
 
 chess_board_X = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 chess_board_coords_X = [ 0, 1, 2, 3, 4, 5, 6, 7 ]
@@ -31,20 +34,20 @@ POSSIBLE_BOARD_POSITIONS = [
 
 # check whether a position exists on the board 
 # takes in chess positions and args
-def is_valid(position):
+def is_valid_chess_position(position):
     position = position.upper()
     return True if position in POSSIBLE_BOARD_POSITIONS else False
 
 # check whether a coordinate is valid 
 # valid coordinates range from 1 to 8 for both X and Y 
-def is_coordinate_valid(coordinate):
+def is_valid_coordinate(coordinate):
     X,Y = coordinate
     return True if 1<= X <= 8 and 1<= Y <= 8 else False
 
 
 # derive a coordinate from a chess position
-def get_coordinate(position):
-    if not is_valid(position):
+def get_coordinate_from_chess_position(position):
+    if not is_valid_chess_position(position):
         return "position doesnt exist on the chessboard "
     position = position.upper()
     return int(letter_coordinate_mappings[position[0]]), int(position[1])
@@ -58,8 +61,8 @@ def get_letter_from_coordinate(coordinate):
     print("doesn't exist")
     return False
 
-def get_position_from_coordinate(coordinate):
-    if not is_coordinate_valid(coordinate):
+def get_chess_position_from_coordinate(coordinate):
+    if not is_valid_coordinate(coordinate):
         return "position doesn't exist on board"
     letter = get_letter_from_coordinate(coordinate[0])
     number = coordinate[1]

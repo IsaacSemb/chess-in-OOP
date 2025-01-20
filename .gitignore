@@ -1,2 +1,6 @@
 *.ipynb
 *.drawio
+
+__pycache__
+.vscode
+*.bkp
